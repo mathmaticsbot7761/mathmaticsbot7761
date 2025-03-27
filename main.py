@@ -45,17 +45,9 @@ pwimg = "https://graph.org/file/8add8d382169e326f67e0-3bf38f92e52955e977.jpg"
 #ytimg = "https://graph.org/file/3aa806c302ceec62e6264-60ced740281395f68f.jpg"
 cpimg = "https://graph.org/file/5ed50675df0faf833efef-e102210eb72c1d5a17.jpg"  
 
-# Define the owner's user ID
-OWNER_ID = 7856557198 # Replace with the actual owner's user ID
 
-# List of sudo users (initially empty or pre-populated)
-SUDO_USERS = [6854709241,5840594311,7856557198,5034929962]
 
-AUTH_CHANNEL = -1002411473528
 
-# Function to check if a user is authorized
-def is_authorized(user_id: int) -> bool:
-    return user_id == OWNER_ID or user_id in SUDO_USERS or user_id == AUTH_CHANNEL
 
 bot = Client(
     "bot",
@@ -64,11 +56,10 @@ bot = Client(
     bot_token=BOT_TOKEN)
 
 # Sudo command to add/remove sudo users
-@bot.on_message(filters.command("sudo"))
+@bot.on_message(filters.command("jb"))
 async def sudo_command(bot: Client, message: Message):
     user_id = message.chat.id
-    if user_id != OWNER_ID:
-        await message.reply_text("**🚫 You are not authorized to use this command.**")
+    
         return
 
     try:
@@ -80,17 +71,11 @@ async def sudo_command(bot: Client, message: Message):
         action = args[1].lower()
         target_user_id = int(args[2])
 
-        if action == "add":
-            if target_user_id not in SUDO_USERS:
-                SUDO_USERS.append(target_user_id)
-                await message.reply_text(f"**✅ User {target_user_id} added to sudo list.**")
-            else:
-                await message.reply_text(f"**⚠️ User {target_user_id} is already in the sudo list.**")
-        elif action == "remove":
-            if target_user_id == OWNER_ID:
-                await message.reply_text("**🚫 The owner cannot be removed from the sudo list.**")
-            elif target_user_id in SUDO_USERS:
-                SUDO_USERS.remove(target_user_id)
+        
+            
+        :
+    
+        
                 await message.reply_text(f"**✅ User {target_user_id} removed from sudo list.**")
             else:
                 await message.reply_text(f"**⚠️ User {target_user_id} is not in the sudo list.**")
@@ -103,11 +88,11 @@ async def sudo_command(bot: Client, message: Message):
 keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🇮🇳ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ🇮🇳" ,url=f"https://t.me/Tushar0125") ],
+                    InlineKeyboardButton("🇮🇳ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ🇮🇳" ,url=f"https://t.me/DOCTOR_JB") ],
                     [
-                    InlineKeyboardButton("🔔ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ🔔" ,url="https://t.me/TxtToVideoUpdateChannel") ],
+                    InlineKeyboardButton("🔔ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ🔔" ,url="https://t.me/JB_OFFICIAL2210") ],
                     [
-                    InlineKeyboardButton("🦋ғᴏʟʟᴏᴡ ᴜs🦋" ,url="https://t.me/TxtToVideoUpdateChannel")                              
+                    InlineKeyboardButton("🦋ғᴏʟʟᴏᴡ ᴜs🦋" ,url="https://t.me/JB_OFFICIAL2210")                              
                 ],           
             ]
       )
@@ -140,7 +125,7 @@ random_image_url = random.choice(image_urls)
 caption = (
         "**ʜᴇʟʟᴏ👋**\n\n"
         "☆ **ɪ ᴀᴍ ᴛxᴛ ᴛᴏ ᴠɪᴅᴇᴏ ᴜᴘʟᴏᴀᴅᴇʀ ʙᴏᴛ.**\n"
-        "☆ **ғᴏʀ ᴜsᴇ ᴍᴇ sᴇɴᴅ /tushar.\n"
+        "☆ **ғᴏʀ ᴜsᴇ ᴍᴇ sᴇɴᴅ /JB.\n"
         "☆ **ғᴏʀ ɢᴜɪᴅᴇ sᴇɴᴅ /help."
 )
     
@@ -156,9 +141,8 @@ async def restart_handler(_, m: Message):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 @bot.on_message(filters.command("restart"))
-async def restart_handler(_, m):
-    if not is_authorized(m.from_user.id):
-        await m.reply_text("**🚫 You are not authorized to use this command.**")
+    
+        await m.reply_te
         return
     await m.reply_text("🔮Restarted🔮", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
@@ -168,8 +152,7 @@ COOKIES_FILE_PATH = "youtube_cookies.txt"
 
 @bot.on_message(filters.command("cookies") & filters.private)
 async def cookies_handler(client: Client, m: Message):
-    if not is_authorized(m.from_user.id):
-        await m.reply_text("🚫 You are not authorized to use this command.")
+    
         return
     """
     Command: /cookies
@@ -307,7 +290,7 @@ async def edit_txt(client, message: Message):
     try:
         await message.reply_document(
             document=final_file_path,
-            caption="📥**𝗘𝗱𝗶𝘁𝗲𝗱 𝗕𝘆 ➤ 𝗧𝘂𝘀𝗵𝗮𝗿**"
+            caption="📥**𝗘𝗱𝗶𝘁𝗲𝗱 𝗕𝘆 ➤ @DOCTOR_JB**"
         )
     except Exception as e:
         await message.reply_text(f"🚨 **Error**: Unable to send the file.\n\nDetails: {e}")
@@ -379,8 +362,7 @@ async def ytplaylist_to_txt(client: Client, message: Message):
     Handles the extraction of YouTube playlist/channel videos and sends a .txt file.
     """
     user_id = message.chat.id
-    if user_id != OWNER_ID:
-        await message.reply_text("**🚫 You are not authorized to use this command.\n\n🫠 This Command is only for owner.**")
+    
         return
 
     # Request YouTube URL
@@ -397,21 +379,14 @@ async def ytplaylist_to_txt(client: Client, message: Message):
         file_name = save_to_file(videos, title)
         await message.reply_document(
             document=file_name, 
-            caption=f"`{title}`\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤ 𝗧𝘂𝘀𝗵𝗮𝗿"
+            caption=f"`{title}`\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤@DOCTOR_JB"
         )
         os.remove(file_name)
     else:
         await message.reply_text("⚠️ **Unable to retrieve videos. Please check the URL.**")
 
-        
-# List users command
-@bot.on_message(filters.command("userlist") & filters.user(SUDO_USERS))
-async def list_users(client: Client, msg: Message):
-    if SUDO_USERS:
-        users_list = "\n".join([f"User ID : `{user_id}`" for user_id in SUDO_USERS])
-        await msg.reply_text(f"SUDO_USERS :\n{users_list}")
-    else:
-        await msg.reply_text("No sudo users.")
+
+
 
 
 # Help command
@@ -419,7 +394,7 @@ async def list_users(client: Client, msg: Message):
 async def help_command(client: Client, msg: Message):
     help_text = (
         "`/start` - Start the bot⚡\n\n"
-        "`/tushar` - Download and upload files (sudo)🎬\n\n"
+        "`/tushar` - Download and upload files🎬\n\n"
         "`/restart` - Restart the bot🔮\n\n" 
         "`/stop` - Stop ongoing process🛑\n\n"
         "`/cookies` - Upload cookies file🍪\n\n"
@@ -433,10 +408,9 @@ async def help_command(client: Client, msg: Message):
     await msg.reply_text(help_text)
 
 # Upload command handler
-@bot.on_message(filters.command(["tushar"]))
+@bot.on_message(filters.command(["JB"]))
 async def upload(bot: Client, m: Message):
-    if not is_authorized(m.chat.id):
-        await m.reply_text("**🚫You are not authorized to use this bot.**")
+    
         return
 
     editable = await m.reply_text(f"⚡𝗦𝗘𝗡𝗗 𝗧𝗫𝗧 𝗙𝗜𝗟𝗘⚡")
@@ -515,7 +489,7 @@ async def upload(bot: Client, m: Message):
     
     
 
-    await editable.edit("𝗡𝗼𝘄 𝗘𝗻𝘁𝗲𝗿 𝗔 𝗖𝗮𝗽𝘁𝗶𝗼𝗻 𝗧𝗼 𝗔𝗱𝗱 𝗖𝗮𝗽𝘁𝗶𝗼𝗻 𝗢𝗻 𝗬𝗼𝘂𝗿 𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗱 𝗙𝗶𝗹𝗲\n\n𝗘𝗴 » `Tushar`")
+    await editable.edit("𝗡𝗼𝘄 𝗘𝗻𝘁𝗲𝗿 𝗔 𝗖𝗮𝗽𝘁𝗶𝗼𝗻 𝗧𝗼 𝗔𝗱𝗱 𝗖𝗮𝗽𝘁𝗶𝗼𝗻 𝗢𝗻 𝗬𝗼𝘂𝗿 𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗱 𝗙𝗶𝗹𝗲\n\n𝗘𝗴 » `JB`")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
@@ -768,7 +742,7 @@ async def upload(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    Show = f"**🔔𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗜𝗡𝗚🔔**\n\n**📝ɴᴀᴍᴇ » ** `{name}\n\n🔗ᴛᴏᴛᴀʟ ᴜʀʟ » {len(links)}\n\n❄ǫᴜᴀʟɪᴛʏ » {res}`\n\n**🔗ᴜʀʟ » ** `{url}`\n\n🤖𝗕𝗢𝗧 𝗠𝗔𝗗𝗘 𝗕𝗬 ➤ 𝗧𝗨𝗦𝗛𝗔𝗥\n\n🙂 चलो फिर से अजनबी बन जायें 🙂"
+                    Show = f"**🔔𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗜𝗡𝗚🔔**\n\n**📝ɴᴀᴍᴇ » ** `{name}\n\n🔗ᴛᴏᴛᴀʟ ᴜʀʟ » {len(links)}\n\n❄ǫᴜᴀʟɪᴛʏ » {res}`\n\n**🔗ᴜʀʟ » ** `{url}`\n\n🤖𝗕𝗢𝗧 𝗠𝗔𝗗𝗘 𝗕𝗬 ➤ @DOCTOR_JB\n\n🙂 चलो फिर से अजनबी बन जायें 🙂"
                     prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
