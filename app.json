@@ -7,8 +7,8 @@
         "video-extract",
         "pyrogram"
     ],
-    "repository": "https://github.com/Tushar557845/ADVANCE-TXT-UPLOADER",
-    "success_url": "https://github.com/Tushar557845/ADVANCE-TXT-UPLOADER",
+    "repository": "https://github.com/mathmaticsbot7761/mathmaticsbot7761",
+    "success_url": "https://github.com/mathmaticsbot7761/mathmaticsbot7761",
     "stack": "heroku-24",
     "env": {
         "API_ID": {
